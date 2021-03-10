@@ -28,18 +28,18 @@
         </div>
         <div class="border_top_model" style="justify-content:flex-end;color: white;">
           <div v-if="todayData.date" style="display: flex;">
-            <div style="text-align:right; font-size: 15px;">
+            <div style="margin: auto; text-align:right; font-size: 15px;">
               <div>
                 {{ todayData.date }}&nbsp;{{ todayData.week || '-' }}
               </div>
               <div v-if="todayData.city">
-                {{ todayData.city }}&nbsp;{{ todayData.weather }}&nbsp;{{ todayData.temperature }}℃
+                {{ todayData.city }}&nbsp;{{ todayData.weather }}&nbsp;{{ todayData.temperature }}
               </div>
               <div v-else>
                 暂无天气信息
               </div>
             </div>
-            <div style="font-size:34px; display: inline-flex; justify-content: center;">
+            <div style="font-size:40px; display: inline-flex; justify-content: center;">
               <div style="margin: auto;">{{ todayData.time }}</div>
             </div>
           </div>
@@ -111,8 +111,9 @@
         this.todayData.week = dateTimeWeek.week
       },
       setWeather() {
-        getWeatherByCity()
+        getWeatherByCity(this.$store.getters.GetInitInfo.city)
           .then(weatherData => {
+            console.log(weatherData)
             this.todayData.city = weatherData.city
             this.todayData.weather = weatherData.weather
             this.todayData.temperature = weatherData.temperature

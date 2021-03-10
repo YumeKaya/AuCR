@@ -66,6 +66,7 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+    background: rgba(0, 0, 0, 0.8);
   }
 
   /* 边框总样式 */

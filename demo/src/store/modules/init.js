@@ -5,6 +5,7 @@ const init = {
     projectId: '5f5994158ce8237490e458e2',
     username: 'testAppkss0rh',
     password: 'c3WLhNQW7YiIVldG',
+    city: '马尾区',
   },
   getters: {
     GetInit: state => {
@@ -16,6 +17,7 @@ const init = {
         projectId: state.projectId,
         username: state.username,
         password: state.password,
+        city: state.city
       }
     }
   },

@@ -6,19 +6,35 @@ function getWeatherByCity(city) {
     }
     fetch('http://wthrcdn.etouch.cn/weather_mini?city=' + city)
       .then(response => {
-        let weatherData = response.data.data
-        if (!weatherData) {
+        console.log('response')
+        console.log(response)
+        console.log('response')
+        if (!response) {
           reject('weather not found')
           return
         }
-        let maxTemperature = weatherData.forecast[0].high
-        let minTemperature = weatherData.forecast[0].low
-        let temperature = minTemperature.split(' ')[1] + '~' + maxTemperature.split(' ')[1]
-        let weather = response.data.data.forecast[0].type
-        resolve({
-          city,
-          temperature,
-          weather
+        if (!response.ok) {
+          reject('weather not found')
+          return
+        }
+        response.json().then(responseData => {
+          let weatherData = responseData.data
+          console.log('weatherData')
+          console.log(weatherData)
+          console.log('weatherData')
+          if (!weatherData) {
+            reject('weather not found')
+            return
+          }
+          let maxTemperature = weatherData.forecast[0].high
+          let minTemperature = weatherData.forecast[0].low
+          let temperature = minTemperature.split(' ')[1] + '~' + maxTemperature.split(' ')[1]
+          let weather = weatherData.forecast[0].type
+          resolve({
+            city,
+            temperature,
+            weather
+          })
         })
       })
       .catch(e => {
