@@ -1,89 +1,63 @@
 <template>
   <div class="main_cover">
-    <div :id="initFrom.renderViewID"></div>
+    <aucr @aucrEvent="aucrEventHandler"/>
+    <border_top :drawer-visible="borderFrom.visible"/>
+    <border_left :drawer-visible="borderFrom.visible"/>
+    <border_right :drawer-visible="borderFrom.visible"/>
+    <border_bottom :drawer-visible="borderFrom.visible"/>
   </div>
 </template>
 
 <script>
+  import aucr from './AuCR'
+  import border_top from './border/top'
+  import border_left from './border/left'
+  import border_right from './border/right'
+  import border_bottom from './border/bottom'
+
   export default {
+    components: {
+      aucr,
+      border_top,
+      border_left,
+      border_right,
+      border_bottom,
+    },
     data() {
       return {
-        initFrom: {
-          renderViewID: 'test_renderViewID',
-          playType: 0,
-          keyboard: true,
-          width: '',
-          height: '',
-        },
+        borderFrom: {
+          visible: true
+        }
       }
     },
     mounted() {
-      this.initStyle()
-      this.init()
+
     },
     beforeDestroy() {
-      this.stop()
+
     },
     methods: {
-      init() {
-        this.$aucr_api.init(Object.assign(this.initFrom, this.$store.getters.GetInitInfo))
-          .then(() => {
-            this.registerEvent()
-          })
-          .catch(e => {
-            this.$notify.error({
-              title: '错误',
-              message: e
-            })
-            this.$store.commit('SetInit', false)
-            this.$router.push('/start')
-          })
-      },
-      stop() {
-        this.$aucr_api.stop()
-          .then(res => {
-            console.log(res)
-            this.$store.commit('SetInit', false)
-          })
-          .catch(e => {
-            this.$notify.error({
-              title: '错误',
-              message: e
-            })
-          })
-      },
-      registerEvent() {
-        this.$aucr_api.registerEvent(this.responseHandler)
-      },
-      eventHandler(eventName, args) {
-        console.log(eventName)
-        console.log(args)
-      },
-      otherHandler(otherName, args) {
-        console.log(otherName)
-        console.log(args)
-      },
-      responseHandler(responseJson) {
-        const response = JSON.parse(responseJson)
-        switch (response.command) {
-          case 'event':
-            this.eventHandler(response.func_name, response.args)
+      aucrEventHandler(event) {
+        console.log(event.name)
+        console.log(event.data)
+        switch (event.name) {
+          case 'OnSuperAPIInputActionStart':
+            this.borderFrom.visible = false
+            break
+          case 'OnSuperAPIInputActionEnd':
+            this.borderFrom.visible = true
             break
           case '':
           default:
-            this.otherHandler(response.func_name, response.args)
+            this.borderFrom.visible = true
+            break
         }
-      },
-      initStyle() {
-        document.getElementsByTagName('body')[0].style.margin = '0px'
-      },
+      }
     }
   }
 </script>
 
 <style scoped>
-  html,
-  body,
   .main_cover {
     top: 0;
     left: 0;
@@ -92,5 +66,11 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
+  }
+
+  /* 边框总样式 */
+  /deep/ .el-drawer {
+    background: rgba(23, 25, 26, 0.3);
+    box-shadow: none;
   }
 </style>
