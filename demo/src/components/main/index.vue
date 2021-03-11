@@ -58,6 +58,18 @@
 </script>
 
 <style scoped>
+  div,
+  body,
+  span {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /deep/ .span_border_title_small {
+    font-size: 12px;
+    color: rgba(155, 166, 177, 1);
+  }
+
   .main_cover {
     top: 0;
     left: 0;
@@ -66,7 +78,7 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
   }
 
   /* 边框总样式 */

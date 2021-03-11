@@ -38,11 +38,11 @@
   .border_left_drawer {
     width: 20%;
     top: 8%;
-    background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 0.8),
-      rgba(255, 255, 255, 0)
+    background: radial-gradient(
+      80vh at right,
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.8)
     );
   }
 </style>

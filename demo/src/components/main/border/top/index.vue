@@ -13,7 +13,7 @@
           <div>
             <span class="text" style="font-size:24px">///&nbsp;</span>
             <span class="text" style="font-size:24px">数字社区综合管理中心&nbsp;</span>
-            <div class="border_top_title_english">Digital Community Integrated Management Center</div>
+            <div class="span_border_title_small border_top_title_english">Digital Community Integrated Management Center</div>
           </div>
         </div>
         <div class="border_top_model" style="justify-content:center;">
@@ -22,7 +22,7 @@
               <el-tab-pane label="数据概述" name="data" />
               <el-tab-pane label="车场运营" name="park" />
               <el-tab-pane label="安全防控" name="security" />
-              <el-tab-pane label="服务概况" name="service" />
+<!--              <el-tab-pane label="服务概况" name="service" />-->
             </el-tabs>
           </div>
         </div>
@@ -40,7 +40,7 @@
               </div>
             </div>
             <div style="font-size:40px; display: inline-flex; justify-content: center;">
-              <div style="margin: auto;">{{ todayData.time }}</div>
+              <div style="margin: auto auto auto 5px;">{{ todayData.time }}</div>
             </div>
           </div>
           <div v-else>
@@ -133,20 +133,19 @@
   .border_top_drawer {
     height: 8%;
     vertical-align: center;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 0.9),
-      rgba(0, 0, 0, 0.4)
+    background: radial-gradient(
+      80vw at bottom,
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 1)
     );
   }
 
   /*上边框英文文字样式 */
   .border_top_title_english {
     text-align: left;
-    margin-top: -2px;
-    font-size: 8px;
-    color: rgba(248, 248, 255, 0.5);
+    font-size: 10px;
     font-style: oblique;
   }
 
@@ -174,19 +173,12 @@
   /* 上边框文字样式 */
   .text,
   /deep/ .el-tabs__item {
+    min-width: 6.25rem;
     font-size: 18px;
     font-weight: bold;
     font-style: oblique;
-    background-image: -webkit-gradient(
-      linear,
-      left 0,
-      right 20,
-      from(white),
-      to(#1e90ff)
-    );
-    /*必需加前缀 -webkit- 才支持这个text值 */
+    background: linear-gradient(to right, white, #1e90ff);
     -webkit-background-clip: text;
-    /*text-fill-color会覆盖color所定义的字体颜色： */
-    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 </style>

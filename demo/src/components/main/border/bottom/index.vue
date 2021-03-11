@@ -40,11 +40,12 @@
     top: 77%;
     height: 23%;
     width: 60%;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 1),
-      rgba(0, 0, 0, 0.3),
-      rgba(255, 255, 255, 0)
+    background: radial-gradient(
+      80vw at top,
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 1)
     );
   }
 </style>
