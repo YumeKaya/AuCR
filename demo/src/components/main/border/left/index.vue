@@ -8,9 +8,8 @@
       :with-header="false"
       :visible.sync="drawerVisible"
     >
-      <div>
-        <span class="span_border_left_test">左边的内容</span>
-        <button v-on:click="click()">left</button>
+      <div class="border_left_body">
+        <slot name="body"/>
       </div>
     </el-drawer>
   </div>
@@ -44,5 +43,10 @@
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.8)
     );
+  }
+
+  .border_left_body {
+    width: 100%;
+    height: 100%;
   }
 </style>

@@ -8,9 +8,8 @@
       :with-header="false"
       :visible.sync="drawerVisible"
     >
-      <div>
-        下面的内容
-        <button v-on:click="click()">left</button>
+      <div class="border_down_body">
+        <slot name="body"/>
       </div>
     </el-drawer>
   </div>
@@ -47,5 +46,10 @@
       rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 1)
     );
+  }
+
+  .border_down_body {
+    width: 100%;
+    height: 100%;
   }
 </style>
