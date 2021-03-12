@@ -17,7 +17,7 @@
       }
     },
     mounted() {
-      this.init()
+      // this.init()
     },
     beforeDestroy() {
       this.stop()

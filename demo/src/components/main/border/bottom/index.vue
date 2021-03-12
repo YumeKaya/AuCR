@@ -38,11 +38,12 @@
     margin: auto;
     top: 77%;
     height: 23%;
-    width: 60%;
+    width: 50%;
     background: radial-gradient(
-      80vw at top,
+      100vw at top,
       rgba(255, 255, 255, 0),
       rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 1)
     );

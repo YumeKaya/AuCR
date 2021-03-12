@@ -6,9 +6,6 @@ function getWeatherByCity(city) {
     }
     fetch('http://wthrcdn.etouch.cn/weather_mini?city=' + city)
       .then(response => {
-        console.log('response')
-        console.log(response)
-        console.log('response')
         if (!response) {
           reject('weather not found')
           return
@@ -19,9 +16,6 @@ function getWeatherByCity(city) {
         }
         response.json().then(responseData => {
           let weatherData = responseData.data
-          console.log('weatherData')
-          console.log(weatherData)
-          console.log('weatherData')
           if (!weatherData) {
             reject('weather not found')
             return

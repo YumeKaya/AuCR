@@ -1,28 +1,28 @@
 <template>
   <div class="main_container">
     <aucr @aucrEvent="aucrEventHandler"/>
-    <border_top :drawer-visible="borderFrom.visible"/>
-    <border_left :drawer-visible="borderFrom.visible"/>
-    <border_right :drawer-visible="borderFrom.visible"/>
-    <border_bottom :drawer-visible="borderFrom.visible"/>
+    <top :drawer-visible="borderFrom.visible"/>
+    <left :drawer-visible="borderFrom.visible"/>
+    <right :drawer-visible="borderFrom.visible"/>
+    <bottom :drawer-visible="borderFrom.visible"/>
   </div>
 </template>
 
 <script>
   import aucr from '../../AuCR'
-  import border_top from '../../main/border/top'
-  import border_left from '../../main/border/left'
-  import border_right from '../../main/border/right'
-  import border_bottom from '../../main/border/bottom'
+  import top from './top'
+  import left from './left'
+  import right from './right'
+  import bottom from './bottom'
 
   export default {
     name: 'name',
     components: {
       aucr,
-      border_top,
-      border_left,
-      border_right,
-      border_bottom,
+      top,
+      left,
+      right,
+      bottom,
     },
     data() {
       return {

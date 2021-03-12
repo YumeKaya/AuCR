@@ -35,10 +35,10 @@
 <style scoped>
   /* 左侧边框样式 */
   .border_left_drawer {
-    width: 20%;
+    width: 25%;
     top: 8%;
     background: radial-gradient(
-      80vh at right,
+      90vh at right,
       rgba(255, 255, 255, 0),
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.8)

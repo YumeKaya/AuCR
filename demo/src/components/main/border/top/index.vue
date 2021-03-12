@@ -9,20 +9,17 @@
       :visible.sync="drawerVisible"
     >
       <div class="border_top_row">
-        <div class="border_top_model" style="justify-content:start;margin:auto">
+        <div class="border_top_model" style="justify-content:start;">
           <div>
-            <span class="text" style="font-size:24px">///&nbsp;</span>
-            <span class="text" style="font-size:24px">数字社区综合管理中心&nbsp;</span>
-            <div class="span_border_title_small border_top_title_english">Digital Community Integrated Management Center</div>
+            <el-image style="height: 40px" :src="img_src"></el-image>
           </div>
         </div>
         <div class="border_top_model" style="justify-content:center;">
           <div>
             <el-tabs v-model="tags.activeName" @tab-click="tagsClickHandler">
-              <el-tab-pane label="数据概述" name="data" />
-              <el-tab-pane label="车场运营" name="park" />
-              <el-tab-pane label="安全防控" name="security" />
-<!--              <el-tab-pane label="服务概况" name="service" />-->
+              <el-tab-pane label="数据概述" name="data"/>
+              <el-tab-pane label="车场运营" name="park"/>
+              <el-tab-pane label="安全防控" name="security"/>
             </el-tabs>
           </div>
         </div>
@@ -53,19 +50,20 @@
 </template>
 
 <script>
-  import { getByDateTimeWeek } from '../../../../util/date'
-  import { getWeatherByCity } from "../../../../util/weather";
+  import {getByDateTimeWeek} from '../../../../util/date'
+  import {getWeatherByCity} from "../../../../util/weather";
 
   export default {
     name: "border-top",
     props: {
       drawerVisible: {
         type: Boolean,
-        default: true
+        default: true,
       }
     },
     data() {
       return {
+        img_src: require('../../../../assets/img/logo.png'),
         tags: {
           activeName: 'data'
         },
@@ -87,9 +85,6 @@
       this.dateTimerStop()
     },
     methods: {
-      click() {
-        console.log(this.name)
-      },
       tagsClickHandler(tab, event) {
         console.log(tab)
         console.log(event)
@@ -105,7 +100,7 @@
         clearInterval(this.dateTimer)
       },
       setDateTimeWeek() {
-        const dateTimeWeek =  getByDateTimeWeek()
+        const dateTimeWeek = getByDateTimeWeek()
         this.todayData.date = dateTimeWeek.date
         this.todayData.time = dateTimeWeek.time
         this.todayData.week = dateTimeWeek.week
@@ -113,7 +108,6 @@
       setWeather() {
         getWeatherByCity(this.$store.getters.GetInitInfo.city)
           .then(weatherData => {
-            console.log(weatherData)
             this.todayData.city = weatherData.city
             this.todayData.weather = weatherData.weather
             this.todayData.temperature = weatherData.temperature
@@ -142,27 +136,20 @@
     );
   }
 
-  /*上边框英文文字样式 */
-  .border_top_title_english {
-    text-align: left;
-    font-size: 10px;
-    font-style: oblique;
-  }
-
   /* 上边框flex全局布局 */
   .border_top_row {
     padding: 0 15px;
     height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
   }
 
   /* 上边框flex各元素通用布局 */
   .border_top_model {
+    margin: auto;
     width: 33.3%;
     display: inline-flex;
-    margin: auto;
   }
 
   /* 标签页横条隐藏 */
@@ -173,12 +160,28 @@
   /* 上边框文字样式 */
   .text,
   /deep/ .el-tabs__item {
-    min-width: 6.25rem;
+    min-width: 7.25rem;
     font-size: 18px;
+    padding: 0 38px;
     font-weight: bold;
     font-style: oblique;
     background: linear-gradient(to right, white, #1e90ff);
     -webkit-background-clip: text;
     color: transparent;
+  }
+
+  /*标签位置样式*/
+  /deep/ .el-tabs__header {
+    margin: 0 0 5px 0;
+  }
+
+  /*选定标签样式*/
+  /deep/ .el-tabs__item.is-active {
+    color: white;
+  }
+
+  /*标签下划线样式*/
+  /deep/ .el-tabs__active-bar {
+    height: 4px;
   }
 </style>
